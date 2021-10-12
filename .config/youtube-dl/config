@@ -1,0 +1,4 @@
+# Save to my external hard drive
+-o ~/storage/youtube-dl/'%(uploader)s'/'%(playlist)s'/'%(playlist_index)s'-'%(title)s'\ ('%(upload_date)s')
+# Write description to a .description file
+--write-description
