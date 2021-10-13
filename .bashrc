@@ -30,12 +30,12 @@ parse_git_branch() {
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# Bash prompt
 user_color='\[\e[0;32m\]'
 if [ "$EUID" -eq 0 ]; then
 user_color='\[\e[0;31m\]'
 fi
 PS1="\[\e[0;34m\]╔══<=$user_color\u\[\e[0;34m\]=>[\[\e[0;35m\]\w\[\e[0;34m\]] \[\e[91m\]\$(parse_git_branch) \n\[\e[0;34m\]╚══>>>\\$ \[$(tput sgr0)\]"
-
 unset user_color
 
 # enable color support of ls, less and man, and also add handy aliases
@@ -87,6 +87,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# prevent nested shells in ranger file manager
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
         /usr/bin/ranger "$@"

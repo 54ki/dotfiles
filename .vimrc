@@ -1,10 +1,15 @@
+" Keybind for paste mode
 set pastetoggle=<F2>
+
+" changes the cursor based on normal/insert mode
 let &t_SI = "\e[5 q"
 let &t_SR = "\e[3 q"
 let &t_EI = "\e[1 q"
-set timeout ttimeoutlen=5
+
+" always show the status line
 set laststatus=2
-set statusline+=%F
+" status line with buffer number, file name, row and column numbers as well as percentage through file
+set statusline+=[%n]%<%F\ %m%r%h%w%=%-14.(%l/%L,%c%V%)\ %P
 
 " Some basics:
 nnoremap c "_c
