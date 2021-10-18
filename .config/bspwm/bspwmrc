@@ -26,6 +26,7 @@ bspc rule -a Steam state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a discord state=floating
 bspc rule -a freezer state=floating
+bspc rule -a NetHack:* state=floating
 bspc rule -a St:ncmpcpp state=floating
 bspc rule -a St:htop state=floating
 bspc rule -a St:pulsemixer state=floating
