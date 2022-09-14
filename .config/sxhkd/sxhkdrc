@@ -49,8 +49,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,s,f}
+	bspc node -t {tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,v,x,y,z}
@@ -136,8 +136,11 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+#
 # CUSTOM HOTKEYS
 #
+
+# Audio control
 XF86AudioPlay
 	mpc toggle
 
@@ -159,12 +162,14 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
 	pactl set-sink-volume @DEFAULT_SINK@ +5%
 
+# Screen recording
 super + r
 	simplescreenrecorder --start-recording --start-hidden
 
 super + shift + r
 	simplescreenrecorder
 
+# Common applications
 super + shift + e
 	$TERMINAL -e neomutt
 
@@ -187,10 +192,16 @@ super + shift + d
 	discord
 
 super + shift + f
-	freezer
+	deemix-gui --disable-gpu-sandbox
+
+#super + shift + q
+#	virt-manager --connect qemu:///system --show-domain-console win10
 
 super + shift + q
-	virt-manager --connect qemu:///system --show-domain-console win10
+	qbittorrent
+
+super + shift + t
+	transmission-remote-gtk
 
 super + q
 	virt-manager 
@@ -201,9 +212,16 @@ super + z
 super + shift + z
 	clipdel -d .*
 
+super + shift + n
+	signal-desktop --use-tray-icon
+
+super + shift + g
+	telegram-desktop
+
 super + Delete
 	.config/polybar/scripts/wireguard.sh --toggle &
 
+# Window manager tweaks
 super + {minus,plus}
   bspc config window_gap $(( $(bspc config window_gap) {-,+} 1 ))    
 
@@ -211,16 +229,34 @@ super + equal
   bspc config window_gap 0
 
 super + space
-  polybar-msg cmd {hide,show}
+  polybar-msg cmd {hide,show} && bspc config top_padding {20,0}
 
+# Screenshot tools
 Print
-	import png:- | xclip -se c -t image/png
+	import png:- | xclip -se c -t image/png -r
 
 ctrl + Print
-	import -window root png:- | xclip -se c -t image/png
+	import -window root png:- | xclip -se c -t image/png -r
 
 shift + Print
-	import ~/hdd/pictures/screenshots/screenshot_$(date '+%Y-%m-%d_%H-%M-%S').png
+	import /mnt/hdd/pictures/screenshots/screenshot_$(date '+%Y-%m-%d_%H-%M-%S').png
 
 ctrl + shift + Print
-	import -window root ~/hdd/pictures/screenshots/screenshot_$(date '+%Y-%m-%d_%H-%M-%S').png
+	import -window root /mnt/hdd/pictures/screenshots/screenshot_$(date '+%Y-%m-%d_%H-%M-%S').png
+
+# Notification control
+ctrl + space
+	dunstctl close
+
+ctrl + shift + space
+	dunstctl close-all
+
+ctrl + grave
+	dunstctl history-pop
+
+ctrl + shift + period
+	dunstctl context
+
+# Screen lock
+super + ctrl + alt + l
+	slock

@@ -1,2 +1,8 @@
 set statusbar-h-padding 0
 set statusbar-v-padding 0
+set page-right-to-left true
+
+map v set "first-page-column 1"
+map b set "first-page-column 2"
+map [fullscreen] v set "first-page-column 1"
+map [fullscreen] b set "first-page-column 2"

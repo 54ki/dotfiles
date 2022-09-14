@@ -86,7 +86,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
 # prevent nested shells in ranger file manager
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
@@ -95,3 +94,7 @@ ranger() {
         exit
     fi
 }
+
+# as recommended by gpg-agent(1)
+GPG_TTY=$(tty)
+export GPG_TTY

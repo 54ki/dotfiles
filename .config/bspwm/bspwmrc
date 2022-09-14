@@ -9,34 +9,36 @@ $HOME/.config/polybar/launch.sh
 killall -q dunst; sleep 0.1; dunst -config ${HOME}/.cache/wal/dunstrc &
 # changes cursor from cross to pointer
 xsetroot -cursor_name left_ptr
+# adds multiple keyboard layouts
+setxkbmap -option grp:sclk_toggle us,ca &
 
 ## SETTINGS ##
-bspc monitor HDMI-1 -d I II III IV V
+bspc monitor HDMI-0 -d I II III IV V
 
 bspc config border_width         2
-bspc config window_gap          12
+bspc config window_gap          40
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+
 ## SIMPLE RULES ##
 bspc rule -a Gimp desktop='^5' state=floating follow=on
-bspc rule -a Steam state=floating
+bspc rule -a Steam state=floating follow=off
 bspc rule -a Zathura state=tiled
 bspc rule -a discord state=floating
 bspc rule -a freezer state=floating
-bspc rule -a NetHack:* state=floating
+bspc rule -a dosbox-x state=floating
 bspc rule -a St:ncmpcpp state=floating
 bspc rule -a St:htop state=floating
 bspc rule -a St:pulsemixer state=floating
-bspc rule -a Firefox:Places state=floating
-bspc rule -a Firefox:Browser state=floating
+bspc rule -a firefox:Places state=floating
+bspc rule -a firefox:Browser state=floating
+bspc rule -a ffplay state=floating
 bspc rule -a SimpleScreenRecorder:simplescreenrecorder state=floating
 bspc rule -a Virt-manager:virt-manager desktop='^4' follow=on
-
-## EXTERNAL RULES ##
-bspc config external_rules_command ~/.config/bspwm/rules/external-rules.sh
+bspc desktop I --layout monocle
 
 ## COLORS ##
 . "${HOME}/.cache/wal/colors.sh"

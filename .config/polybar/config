@@ -28,9 +28,9 @@ alert = ${xrdb:color3:#222}
 
 [bar/mybar]
 enable-ipc = true
-monitor = HDMI-1
+monitor = HDMI-0
 width = 100%
-height = 23
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
