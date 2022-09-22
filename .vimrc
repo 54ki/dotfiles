@@ -31,6 +31,11 @@ set wildmode=longest,list,full
 
 " Splits open at the bottom and right
 set splitbelow splitright
+" Easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Change color of highlights
 hi Visual cterm=bold ctermbg=8 ctermfg=None
